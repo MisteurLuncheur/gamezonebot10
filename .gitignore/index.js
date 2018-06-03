@@ -1,5 +1,6 @@
 const Discord = require('discord.js');
 const bot = new Discord.Client();
+const {get} = require ("snekfetch");
 
 var prefix = ("Game:")
 
@@ -90,6 +91,7 @@ bot.on('message', message => {
             .addField("Game:fabriquant","Pour savoir le créateur du bot", true)
             .addField("Game:say","Pour faire parler le bot", true)
             .addField("Game:infodiscord","Pour voir les info du serveur", true)
+            .addField("Game:chat","Te sort un image de chat", true)
             .addField("Chaine de MisteurLuncheur","Suivez la Chaine de MisteurLuncheur ;)(https://www.youtube.com/channel/UC9eNMtiRt-6-AGV_2Ne9oog?view_as=subscriber)", true)
             .setColor("#29088A")
             .setFooter("Bon moment parmis nous ! :)")
@@ -102,4 +104,31 @@ bot.on('message', message => {
     var msg = message.content.substr('8')
     message.delete(message.author);
     message.channel.send(msg);
-}});
+    case "ramdomchat":
+         try {
+             get('https://aws.random.cat/meow').then(res => {
+                 const embed = new Discord.RichEmbed()
+                 .setDescription(`:cat: Image de chat ${message.author.username}`)
+                 .setImage(res.body.file)
+                 .setColor("0x201F1F")
+                 return message.channel.send({embed});
+             })
+   
+      } catch(err) {
+             return message.channel.send(error.stack);
+         }
+             break;
+        }
+})
+
+
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        

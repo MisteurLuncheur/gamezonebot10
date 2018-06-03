@@ -105,18 +105,18 @@ bot.on('message', message => {
     message.delete(message.author);
     message.channel.send(msg);
     case "ramdomchat":
-         try {
-             get('https://aws.random.cat/meow').then(res => {
-                 const embed = new Discord.RichEmbed()
-                 .setDescription(`:cat: Image de chat ${message.author.username}`)
-                 .setImage(res.body.file)
-                 .setColor("0x201F1F")
-                 return message.channel.send({embed});
-             })
+     try {
+         get('https://aws.random.cat/meow').then(res => {
+              const embed = new Discord.RichEmbed()
+              .setDescription(`:cat: Image de chat ${message.author.username}`)
+              .setImage(res.body.file)
+              .setColor("0x201F1F")
+              return message.channel.send({embed});
+          })
    
-      } catch(err) {
-             return message.channel.send(error.stack);
-         }
-             break;
-        }
+   } catch(err) {
+          return message.channel.send(error.stack);
+      }
+          break;
+     }
 })
